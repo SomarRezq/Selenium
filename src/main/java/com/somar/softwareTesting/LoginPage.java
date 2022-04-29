@@ -11,8 +11,8 @@ import java.util.function.Predicate;
 
 public class LoginPage extends BasePage {
 
-    private By emailTextField = By.xpath("/html/body/div[1]/div/div/div[2]/div[2]/div[5]/div/input");
-    private By passwordTextField = By.xpath("/html/body/div[1]/div/div/div[2]/div[2]/div[3]/div[1]/div/input");
+    private By emailTextField = By.xpath("/html/body/div[1]/div/div/div[2]/div[2]/div[5]/div/input/");
+    private By passwordTextField = By.xpath("/html/body/div[1]/div/div/div[2]/div[2]/div[3]/div[1]/div/input/");
     private By submitButton = By.xpath("/html/body/div[1]/div/div/div[2]/div[2]/div[4]");
     private By continueButton = By.xpath("/html/body/div[1]/div/div/div[2]/div[2]/div[6]");
 
