@@ -25,7 +25,7 @@ class MainPageTest {
     public void testSiteLoads() {
         MainPage mainPage = new MainPage(this.driver);
         assertTrue(mainPage.getBodyText().contains("World's easiest way to add meetings to your web & mobile apps"));
-        assertTrue(mainPage.getFooterText().contains("What’s JaaS?"));
+        assertTrue(mainPage.getFooterText().contains("All Rights Reserved"));
     }
 
     @AfterAll

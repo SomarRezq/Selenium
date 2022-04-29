@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Sleeper;
 
 import java.util.function.Predicate;
 
@@ -20,8 +21,8 @@ public class LoginPage extends BasePage {
     }
 
 
-    public DashboardPage clickLogin(String username, String password) {
-        this.waitAndReturnElement(emailTextField).sendKeys(username);
+    public DashboardPage clickLogin(String email, String password) {
+        this.waitAndReturnElement(emailTextField).sendKeys(email);
         // wait until the button is clickable
         waitUntilClickable(continueButton).click();
 
