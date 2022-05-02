@@ -34,7 +34,7 @@ public class LoginPageTest {
     public void testLoginPage() {
         MainPage mainPage = new MainPage(this.driver);
         LoginPage loginPage = mainPage.getLoginPage();
-        assertTrue(loginPage.getBodyText().contains("Jitsi as a Service"));
+        assertTrue(loginPage.getBodyText().contains("Sign in"));
     }
 
     @Test
@@ -42,7 +42,7 @@ public class LoginPageTest {
         MainPage mainPage = new MainPage(this.driver);
         LoginPage loginPage = mainPage.getLoginPage();
         DashboardPage dashboardPage = loginPage.clickLogin(email, password);
-        assertTrue(dashboardPage.getBodyText().contains("Full frame integration"));
+        assertTrue(dashboardPage.getBodyText().contains("Each device is available for up to 10 minutes during Free Trial. For full access:"));
     }
 
     @Test
@@ -50,8 +50,8 @@ public class LoginPageTest {
         MainPage mainPage = new MainPage(this.driver);
         LoginPage loginPage = mainPage.getLoginPage();
         DashboardPage dashboardPage = loginPage.clickLogin(email, password);
-        assertTrue(dashboardPage.getBodyText().contains("Full frame integration"));
+        assertTrue(dashboardPage.getBodyText().contains("Each device is available for up to 10 minutes during Free Trial. For full access:"));
         loginPage = dashboardPage.logout();
-        assertTrue(loginPage.getBodyText().contains("Login"));
+        assertTrue(loginPage.getBodyText().contains("Sign in"));
     }
 }
