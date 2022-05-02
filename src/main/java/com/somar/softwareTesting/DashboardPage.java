@@ -15,8 +15,8 @@ public class DashboardPage extends BasePage {
     }
 
     public LoginPage logout() {
-        this.waitAndReturnElement(profileButton).click();
-        this.waitAndReturnElement(logoutButton).click();
+        this.waitForElement(profileButton).click();
+        this.waitForElement(logoutButton).click();
         wait.until(ExpectedConditions.urlContains("live"));
         return new LoginPage(driver);
     }

@@ -33,25 +33,25 @@ public class LoginPageTest {
     @Test
     public void testLoginPage() {
         MainPage mainPage = new MainPage(this.driver);
-        LoginPage loginPage = mainPage.getLoginPage();
-        assertTrue(loginPage.getBodyText().contains("Sign in"));
+        LoginPage loginPage = mainPage.signInPage();
+        assertTrue(loginPage.returnBody().contains("Sign in"));
     }
 
     @Test
     public void testLoginAction() {
         MainPage mainPage = new MainPage(this.driver);
-        LoginPage loginPage = mainPage.getLoginPage();
+        LoginPage loginPage = mainPage.signInPage();
         DashboardPage dashboardPage = loginPage.clickLogin(email, password);
-        assertTrue(dashboardPage.getBodyText().contains("Each device is available for up to 10 minutes during Free Trial. For full access:"));
+        assertTrue(dashboardPage.returnBody().contains("Each device is available for up to 10 minutes during Free Trial. For full access:"));
     }
 
     @Test
     public void testLogoutAction() throws InterruptedException {
         MainPage mainPage = new MainPage(this.driver);
-        LoginPage loginPage = mainPage.getLoginPage();
+        LoginPage loginPage = mainPage.signInPage();
         DashboardPage dashboardPage = loginPage.clickLogin(email, password);
-        assertTrue(dashboardPage.getBodyText().contains("Each device is available for up to 10 minutes during Free Trial. For full access:"));
+        assertTrue(dashboardPage.returnBody().contains("Each device is available for up to 10 minutes during Free Trial. For full access:"));
         loginPage = dashboardPage.logout();
-        assertTrue(loginPage.getBodyText().contains("Sign in"));
+        assertTrue(loginPage.returnBody().contains("Sign in"));
     }
 }

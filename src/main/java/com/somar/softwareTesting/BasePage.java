@@ -13,20 +13,19 @@ class BasePage {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 25);
     }
-
-    protected WebElement waitAndReturnElement(By locator) {
-        this.wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-        return this.driver.findElement(locator);
+    public String returnBody() {
+        WebElement bodyElement = this.waitForElement(By.tagName("body"));
+        return bodyElement.getText();
     }
 
-    protected WebElement waitUntilClickable(By locator) {
-        WebElement button = this.waitAndReturnElement(locator);
+    protected WebElement waitBeforClick(By locator) {
+        WebElement button = this.waitForElement(locator);
         wait.until(ExpectedConditions.elementToBeClickable(button));
         return button;
     }
 
-    public String getBodyText() {
-        WebElement bodyElement = this.waitAndReturnElement(By.tagName("body"));
-        return bodyElement.getText();
+    protected WebElement waitForElement(By locator) {
+        this.wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        return this.driver.findElement(locator);
     }
 }

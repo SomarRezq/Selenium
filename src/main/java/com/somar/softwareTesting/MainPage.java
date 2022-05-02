@@ -12,12 +12,12 @@ public class MainPage extends BasePage {
         this.driver.get("https://www.browserstack.com/");
     }
 
-    public String getFooterText() {
-        return this.waitAndReturnElement(footerBy).getText();
+    public String returnFooter() {
+        return this.waitForElement(footerBy).getText();
     }
 
-    public LoginPage getLoginPage() {
-        this.waitAndReturnElement(loginButton).click();
+    public LoginPage signInPage() {
+        this.waitForElement(loginButton).click();
         return new LoginPage(this.driver);
     }
 }
