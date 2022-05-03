@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class MainPageTest {
+class PartnersPageTest {
     public WebDriver driver;
 
     @BeforeAll
@@ -22,24 +22,10 @@ class MainPageTest {
     }
 
     @Test
-    public void testSiteLoads() {
-        MainPage mainPage = new MainPage(this.driver);
-        assertTrue(mainPage.returnBody().contains("Testing Made Easy"));
-        assertTrue(mainPage.returnFooter().contains("PRODUCTS"));
-    }
-
-    @Test
-    public void testPricingPage() {
-        MainPage mainPage = new MainPage(this.driver);
-        ViewPricingPage viewPricingPage = mainPage.viewPricingPage();
-        assertTrue(viewPricingPage.returnBody().contains("PRODUCTS"));
-    }
-
-    @Test
-    public void testPartnersPage() {
+    public void TestReturnTextAreaText() {
         MainPage mainPage = new MainPage(this.driver);
         PartnersPage partnersPage = mainPage.partnersPage();
-        assertTrue(partnersPage.returnBody().contains("Become a BrowserStack Partner"));
+        assertTrue(partnersPage.returnTextAreaText().contains("Tell us how we can help"));
     }
 
     @AfterAll

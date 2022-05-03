@@ -8,7 +8,9 @@ public class DashboardPage extends BasePage {
 
     private By profileButton = By.xpath("/html/body/div[1]/header/div/div/nav/ul[1]/li[7]/button");
     private By logoutButton = By.xpath("/html/body/div[1]/header/div/div/nav/ul[1]/li[7]/ul/li[7]/a");
-
+    private By openSearchWindow = By.xpath("/html/body/div[1]/header/div/div/nav/ul[1]/li[9]/button");
+    private By searchTextInput = By.xpath("//*[@id=\"doc-search-box-input\"]");
+    private By searchButton = By.xpath("//*[@id=\"ds-input-handle\"]/button[2]");
 
     public DashboardPage(WebDriver driver) {
         super(driver);
@@ -19,5 +21,13 @@ public class DashboardPage extends BasePage {
         this.waitForElement(logoutButton).click();
         wait.until(ExpectedConditions.urlContains("live"));
         return new SignIn(driver);
+    }
+
+    public SearchPage search(String text) {
+        this.waitForElement(openSearchWindow).click();
+        this.waitForElement(searchTextInput).sendKeys(text);
+        this.waitForElement(searchButton).click();
+        wait.until(ExpectedConditions.urlContains("search"));
+        return new SearchPage(driver);
     }
 }

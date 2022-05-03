@@ -11,10 +11,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class SignInPageTest {
+public class DashboardPageTest {
     public WebDriver driver;
     private String email = "somar.rezk.1994@gmail.com";
     private String password = "somarsomar";
+    private String searchText = "test";
 
     @BeforeAll
     public void setup() {
@@ -31,27 +32,11 @@ public class SignInPageTest {
     }
 
     @Test
-    public void testLoginPage() {
-        MainPage mainPage = new MainPage(this.driver);
-        SignIn loginPage = mainPage.signInPage();
-        assertTrue(loginPage.returnBody().contains("Sign in"));
-    }
-
-    @Test
-    public void testLoginAction() {
+    public void testSearchAction() {
         MainPage mainPage = new MainPage(this.driver);
         SignIn loginPage = mainPage.signInPage();
         DashboardPage dashboardPage = loginPage.clickLogin(email, password);
-        assertTrue(dashboardPage.returnBody().contains("Automate"));
-    }
-
-    @Test
-    public void testLogoutAction() throws InterruptedException {
-        MainPage mainPage = new MainPage(this.driver);
-        SignIn loginPage = mainPage.signInPage();
-        DashboardPage dashboardPage = loginPage.clickLogin(email, password);
-        assertTrue(dashboardPage.returnBody().contains("Each device is available for up to 10 minutes during Free Trial. For full access:"));
-        loginPage = dashboardPage.logout();
-        assertTrue(loginPage.returnBody().contains("Sign in"));
+        SearchPage searchPage = dashboardPage.search(searchText);
+        assertTrue(searchPage.returnBody().contains("Search Results"));
     }
 }
