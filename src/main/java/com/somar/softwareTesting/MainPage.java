@@ -16,8 +16,8 @@ public class MainPage extends BasePage {
         return this.waitForElement(footerBy).getText();
     }
 
-    public LoginPage signInPage() {
+    public SignIn signInPage() {
         this.waitForElement(loginButton).click();
-        return new LoginPage(this.driver);
+        return new SignIn(this.driver);
     }
 }

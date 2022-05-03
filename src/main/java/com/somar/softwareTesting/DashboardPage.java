@@ -14,10 +14,10 @@ public class DashboardPage extends BasePage {
         super(driver);
     }
 
-    public LoginPage logout() {
+    public SignIn logout() {
         this.waitForElement(profileButton).click();
         this.waitForElement(logoutButton).click();
         wait.until(ExpectedConditions.urlContains("live"));
-        return new LoginPage(driver);
+        return new SignIn(driver);
     }
 }
