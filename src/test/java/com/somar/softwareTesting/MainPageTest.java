@@ -48,6 +48,12 @@ class MainPageTest {
         assertTrue(mainPage.GetTitle().contains("Most Reliable App & Cross Browser Testing Platform | BrowserStack"));
     }
     
+    @Test
+    public void testhoverToPricingButton() {
+        MainPage mainPage = new MainPage(this.driver);
+        assertTrue(mainPage.hoverToPricingButton());
+    }
+    
     @AfterAll
     public void close() {
         if (driver != null) {

@@ -1,13 +1,17 @@
 package com.somar.softwareTesting;
 
+import java.io.Console;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class MainPage extends BasePage {
     private JavascriptExecutor js = (JavascriptExecutor) driver;
 
+    private By cookieAcceptButton = By.id("accept-cookie-notification");
     private By footerBy = By.xpath("/html/body/div[1]/footer");
     private By loginButton = By.xpath("/html/body/div[1]/header/div[1]/div/nav/ul[1]/li[5]/a");
     private By viewPricingButton = By.xpath("//*[@id=\"post-26\"]/div[6]/div/div/div/article/div/div[2]/div/span[2]/a");
@@ -16,6 +20,8 @@ public class MainPage extends BasePage {
     public MainPage(WebDriver driver) {
         super(driver);
         this.driver.get("https://www.browserstack.com/");
+        this.waitBeforClick(cookieAcceptButton).click();
+        
     }
 
     public String returnFooter() {
@@ -25,6 +31,13 @@ public class MainPage extends BasePage {
     public SignInPage signInPage() {
         this.waitForElement(loginButton).click();
         return new SignInPage(this.driver);
+    }
+
+    public Boolean hoverToPricingButton() {
+        Actions actions = new Actions(this.driver);
+        String colorValue = this.waitForElement(viewPricingButton).getCssValue("color");
+        actions.moveToElement(this.waitForElement(viewPricingButton)).perform();
+        return this.waitForElement(viewPricingButton).getCssValue("color") != colorValue;
     }
 
     public ViewPricingPage viewPricingPage() {
