@@ -22,9 +22,9 @@ public class MainPage extends BasePage {
         return this.waitForElement(footerBy).getText();
     }
 
-    public SignIn signInPage() {
+    public SignInPage signInPage() {
         this.waitForElement(loginButton).click();
-        return new SignIn(this.driver);
+        return new SignInPage(this.driver);
     }
 
     public ViewPricingPage viewPricingPage() {
@@ -41,5 +41,9 @@ public class MainPage extends BasePage {
         wait.until(ExpectedConditions.urlContains("partners"));
         return new PartnersPage(this.driver);
 
+    }
+
+    public String GetTitle() {
+        return this.driver.getTitle();
     }
 }

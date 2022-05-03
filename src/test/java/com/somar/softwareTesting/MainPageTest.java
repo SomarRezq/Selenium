@@ -42,6 +42,12 @@ class MainPageTest {
         assertTrue(partnersPage.returnBody().contains("Become a BrowserStack Partner"));
     }
 
+    @Test
+    public void testTitle() {
+        MainPage mainPage = new MainPage(this.driver);
+        assertTrue(mainPage.GetTitle().contains("Most Reliable App & Cross Browser Testing Platform | BrowserStack"));
+    }
+    
     @AfterAll
     public void close() {
         if (driver != null) {

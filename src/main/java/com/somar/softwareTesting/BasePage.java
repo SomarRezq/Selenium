@@ -18,14 +18,14 @@ class BasePage {
         return bodyElement.getText();
     }
 
+    protected WebElement waitForElement(By locator) {
+        this.wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        return this.driver.findElement(locator);
+    }
+
     protected WebElement waitBeforClick(By locator) {
         WebElement button = this.waitForElement(locator);
         wait.until(ExpectedConditions.elementToBeClickable(button));
         return button;
-    }
-
-    protected WebElement waitForElement(By locator) {
-        this.wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-        return this.driver.findElement(locator);
     }
 }

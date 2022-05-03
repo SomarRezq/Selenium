@@ -34,7 +34,7 @@ public class DashboardPageTest {
     @Test
     public void testSearchAction() {
         MainPage mainPage = new MainPage(this.driver);
-        SignIn loginPage = mainPage.signInPage();
+        SignInPage loginPage = mainPage.signInPage();
         DashboardPage dashboardPage = loginPage.clickLogin(email, password);
         SearchPage searchPage = dashboardPage.search(searchText);
         assertTrue(searchPage.returnBody().contains("Search Results"));

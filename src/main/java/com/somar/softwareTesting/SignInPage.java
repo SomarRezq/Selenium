@@ -9,13 +9,13 @@ import org.openqa.selenium.support.ui.Sleeper;
 
 import java.util.function.Predicate;
 
-public class SignIn extends BasePage {
+public class SignInPage extends BasePage {
 
     private By emailTextField = By.xpath("/html/body/main/div[4]/section/form/div[1]/div/div[1]/div[4]/div/input");
     private By passwordTextField = By.xpath("/html/body/main/div[4]/section/form/div[1]/div/div[1]/div[5]/div/input");
     private By submitButton = By.xpath("/html/body/main/div[4]/section/form/div[1]/div/div[1]/div[10]/div/input");
 
-    public SignIn(WebDriver driver) {
+    public SignInPage(WebDriver driver) {
         super(driver);
     }
 

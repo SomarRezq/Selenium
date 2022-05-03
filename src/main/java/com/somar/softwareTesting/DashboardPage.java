@@ -16,11 +16,11 @@ public class DashboardPage extends BasePage {
         super(driver);
     }
 
-    public SignIn logout() {
+    public SignInPage logout() {
         this.waitForElement(profileButton).click();
         this.waitForElement(logoutButton).click();
         wait.until(ExpectedConditions.urlContains("live"));
-        return new SignIn(driver);
+        return new SignInPage(driver);
     }
 
     public SearchPage search(String text) {
