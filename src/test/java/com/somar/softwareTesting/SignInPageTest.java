@@ -50,7 +50,6 @@ public class SignInPageTest {
         MainPage mainPage = new MainPage(this.driver);
         SignInPage loginPage = mainPage.signInPage();
         DashboardPage dashboardPage = loginPage.clickLogin(email, password);
-        assertTrue(dashboardPage.returnBody().contains("Each device is available for up to 10 minutes during Free Trial. For full access:"));
         loginPage = dashboardPage.logout();
         assertTrue(loginPage.returnBody().contains("Sign in"));
     }

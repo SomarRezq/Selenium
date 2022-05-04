@@ -20,7 +20,7 @@ public class DashboardPage extends BasePage {
     public SignInPage logout() {
         this.waitForElement(profileButton).click();
         this.waitForElement(logoutButton).click();
-        wait.until(ExpectedConditions.urlContains("live"));
+        wait.until(ExpectedConditions.urlContains("automate"));
         return new SignInPage(driver);
     }
 
