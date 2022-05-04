@@ -28,7 +28,7 @@ class contactPageTest {
     public void testgetWorkingLocalyValueAction() {
         MainPage mainPage = new MainPage(this.driver);
         SignInPage loginPage = mainPage.signInPage();
-        DashboardPage dashboardPage = loginPage.clickLogin(email, password);
+        DashboardPage dashboardPage = loginPage.signIn(email, password);
         ContactPage contactPage = dashboardPage.contactUs();
         assertTrue(contactPage.getWorkingLocalyValue().contains("Yes"));
     }
@@ -37,7 +37,7 @@ class contactPageTest {
     public void testuploadFileAction() {
         MainPage mainPage = new MainPage(this.driver);
         SignInPage loginPage = mainPage.signInPage();
-        DashboardPage dashboardPage = loginPage.clickLogin(email, password);
+        DashboardPage dashboardPage = loginPage.signIn(email, password);
         ContactPage contactPage = dashboardPage.contactUs();
         assertTrue(contactPage.uploadFile(path).contains("1.png"));
     }
@@ -46,7 +46,7 @@ class contactPageTest {
     public void testdragAndDropFileAction() {
         MainPage mainPage = new MainPage(this.driver);
         SignInPage loginPage = mainPage.signInPage();
-        DashboardPage dashboardPage = loginPage.clickLogin(email, password);
+        DashboardPage dashboardPage = loginPage.signIn(email, password);
         ContactPage contactPage = dashboardPage.contactUs();
         assertTrue(contactPage.dragAndDropFile(path).contains("1.png"));
     }

@@ -35,7 +35,7 @@ public class DashboardPageTest {
     public void testSearchAction() {
         MainPage mainPage = new MainPage(this.driver);
         SignInPage loginPage = mainPage.signInPage();
-        DashboardPage dashboardPage = loginPage.clickLogin(email, password);
+        DashboardPage dashboardPage = loginPage.signIn(email, password);
         SearchPage searchPage = dashboardPage.search(searchText);
         assertTrue(searchPage.returnBody().contains("Search Results"));
     }
@@ -44,7 +44,7 @@ public class DashboardPageTest {
     public void testcontactUsPage() {
         MainPage mainPage = new MainPage(this.driver);
         SignInPage loginPage = mainPage.signInPage();
-        DashboardPage dashboardPage = loginPage.clickLogin(email, password);
+        DashboardPage dashboardPage = loginPage.signIn(email, password);
         ContactPage contactPage = dashboardPage.contactUs();
         assertTrue(contactPage.returnBody().contains("Get in touch with us"));
     }

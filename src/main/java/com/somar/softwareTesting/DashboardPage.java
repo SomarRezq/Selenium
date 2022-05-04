@@ -17,7 +17,7 @@ public class DashboardPage extends BasePage {
         super(driver);
     }
 
-    public SignInPage logout() {
+    public SignInPage signOut() {
         this.waitForElement(profileButton).click();
         this.waitForElement(logoutButton).click();
         wait.until(ExpectedConditions.urlContains("automate"));

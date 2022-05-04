@@ -16,7 +16,7 @@ public class SignInPage extends BasePage {
     }
 
 
-    public DashboardPage clickLogin(String email, String password) {
+    public DashboardPage signIn(String email, String password) {
         this.waitForElement(emailTextField).sendKeys(email);
         this.waitForElement(passwordTextField).sendKeys(password);
 

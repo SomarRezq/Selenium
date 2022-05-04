@@ -22,7 +22,7 @@ class PartnersPageTest {
     }
 
     @Test
-    public void TestReturnTextAreaText() {
+    public void TestReturnTextAreaTextAction() {
         MainPage mainPage = new MainPage(this.driver);
         PartnersPage partnersPage = mainPage.partnersPage();
         assertTrue(partnersPage.returnTextAreaText().contains("Tell us how we can help"));

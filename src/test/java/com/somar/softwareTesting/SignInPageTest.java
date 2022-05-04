@@ -31,26 +31,26 @@ public class SignInPageTest {
     }
 
     @Test
-    public void testLoginPage() {
+    public void testSignInPage() {
         MainPage mainPage = new MainPage(this.driver);
         SignInPage loginPage = mainPage.signInPage();
         assertTrue(loginPage.returnBody().contains("Sign in"));
     }
 
     @Test
-    public void testLoginAction() {
+    public void testSignInAction() {
         MainPage mainPage = new MainPage(this.driver);
         SignInPage loginPage = mainPage.signInPage();
-        DashboardPage dashboardPage = loginPage.clickLogin(email, password);
+        DashboardPage dashboardPage = loginPage.signIn(email, password);
         assertTrue(dashboardPage.returnBody().contains("Automate"));
     }
 
     @Test
-    public void testLogoutAction() throws InterruptedException {
+    public void testSignOutAction() throws InterruptedException {
         MainPage mainPage = new MainPage(this.driver);
         SignInPage loginPage = mainPage.signInPage();
-        DashboardPage dashboardPage = loginPage.clickLogin(email, password);
-        loginPage = dashboardPage.logout();
+        DashboardPage dashboardPage = loginPage.signIn(email, password);
+        loginPage = dashboardPage.signOut();
         assertTrue(loginPage.returnBody().contains("Sign in"));
     }
 }
