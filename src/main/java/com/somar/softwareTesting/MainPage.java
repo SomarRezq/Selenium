@@ -1,6 +1,5 @@
 package com.somar.softwareTesting;
 
-import java.io.Console;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
