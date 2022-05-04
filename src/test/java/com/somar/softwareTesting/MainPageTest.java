@@ -5,10 +5,17 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.lang3.builder.ToStringExclude;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class MainPageTest {
@@ -54,6 +61,16 @@ class MainPageTest {
         assertTrue(mainPage.hoverToPricingButton());
     }
     
+    @Test
+    public void testHistory() {
+        MainPage mainPage = new MainPage(this.driver);
+        SignInPage loginPage = mainPage.signInPage();
+        this.driver.navigate().back(); 
+        this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        WebElement bodyElement = this.driver.findElement(By.tagName("body"));
+        assertTrue(bodyElement.getText().contains("Testing Made Easy"));
+    }
+
     @AfterAll
     public void close() {
         if (driver != null) {

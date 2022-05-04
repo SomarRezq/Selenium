@@ -11,11 +11,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class DashboardPageTest {
+class contactPageTest {
     public WebDriver driver;
     private String email = "somar.rezk.1994@gmail.com";
     private String password = "somarsomar";
-    private String searchText = "test";
+    private String path = "C:\\Users\\Somar\\GradleProjects\\Selenium\\src\\assets\\1.png";
 
     @BeforeAll
     public void setup() {
@@ -24,28 +24,37 @@ public class DashboardPageTest {
         driver.manage().window().maximize();
     }
 
+    @Test
+    public void testgetWorkingLocalyValueAction() {
+        MainPage mainPage = new MainPage(this.driver);
+        SignInPage loginPage = mainPage.signInPage();
+        DashboardPage dashboardPage = loginPage.clickLogin(email, password);
+        ContactPage contactPage = dashboardPage.contactUs();
+        assertTrue(contactPage.getWorkingLocalyValue().contains("Yes"));
+    }
+
+    @Test
+    public void testuploadFileAction() {
+        MainPage mainPage = new MainPage(this.driver);
+        SignInPage loginPage = mainPage.signInPage();
+        DashboardPage dashboardPage = loginPage.clickLogin(email, password);
+        ContactPage contactPage = dashboardPage.contactUs();
+        assertTrue(contactPage.uploadFile(path).contains("1.png"));
+    }
+
+    @Test
+    public void testdragAndDropFileAction() {
+        MainPage mainPage = new MainPage(this.driver);
+        SignInPage loginPage = mainPage.signInPage();
+        DashboardPage dashboardPage = loginPage.clickLogin(email, password);
+        ContactPage contactPage = dashboardPage.contactUs();
+        assertTrue(contactPage.dragAndDropFile(path).contains("1.png"));
+    }
+
     @AfterAll
     public void close() {
         if (driver != null) {
             driver.quit();
         }
-    }
-
-    @Test
-    public void testSearchAction() {
-        MainPage mainPage = new MainPage(this.driver);
-        SignInPage loginPage = mainPage.signInPage();
-        DashboardPage dashboardPage = loginPage.clickLogin(email, password);
-        SearchPage searchPage = dashboardPage.search(searchText);
-        assertTrue(searchPage.returnBody().contains("Search Results"));
-    }
-
-    @Test
-    public void testcontactUsPage() {
-        MainPage mainPage = new MainPage(this.driver);
-        SignInPage loginPage = mainPage.signInPage();
-        DashboardPage dashboardPage = loginPage.clickLogin(email, password);
-        ContactPage contactPage = dashboardPage.contactUs();
-        assertTrue(contactPage.returnBody().contains("Get in touch with us"));
     }
 }
