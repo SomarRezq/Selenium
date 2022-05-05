@@ -13,8 +13,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class DashboardPageTest {
     public WebDriver driver;
-    private String email = "somar.rezk.1994@gmail.com";
-    private String password = "somarsomar";
+    ConfigFileReader configFileReader;
+
+    private String email, password;
     private String searchText = "test";
 
     @BeforeEach
@@ -22,6 +23,9 @@ public class DashboardPageTest {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        configFileReader = new ConfigFileReader();
+        this.email = configFileReader.getUserName();
+        this.password = configFileReader.getPassWord();
     }
 
     @AfterEach

@@ -13,15 +13,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class contactPageTest {
     public WebDriver driver;
-    private String email = "somar.rezk.1994@gmail.com";
-    private String password = "somarsomar";
-    private String path = "C:\\Users\\Somar\\GradleProjects\\Selenium\\src\\assets\\1.png";
+    ConfigFileReader configFileReader;
+    private String email, password, path;
 
     @BeforeEach
     public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        configFileReader = new ConfigFileReader();
+        this.email = configFileReader.getUserName();
+        this.password = configFileReader.getPassWord();
+        this.path = configFileReader.getImgPath();
     }
 
     @Test

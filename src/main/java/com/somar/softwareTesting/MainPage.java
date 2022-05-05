@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class MainPage extends BasePage {
     private JavascriptExecutor js = (JavascriptExecutor) driver;
+    ConfigFileReader configFileReader;
 
     private By cookieAcceptButton = By.id("accept-cookie-notification");
     private By footerBy = By.xpath("/html/body/div[1]/footer");
@@ -18,7 +19,9 @@ public class MainPage extends BasePage {
 
     public MainPage(WebDriver driver) {
         super(driver);
-        this.driver.get("https://www.browserstack.com/");
+        configFileReader= new ConfigFileReader();
+
+        this.driver.get(configFileReader.getWebsiteUrl());
         if (!this.driver.findElements(cookieAcceptButton).isEmpty())
         this.waitBeforClick(cookieAcceptButton).click(); 
     }
