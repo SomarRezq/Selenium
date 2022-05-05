@@ -1,8 +1,8 @@
 package com.somar.softwareTesting;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.openqa.selenium.WebDriver;
@@ -17,14 +17,14 @@ public class DashboardPageTest {
     private String password = "somarsomar";
     private String searchText = "test";
 
-    @BeforeAll
+    @BeforeEach
     public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
 
-    @AfterAll
+    @AfterEach
     public void close() {
         if (driver != null) {
             driver.quit();

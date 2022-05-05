@@ -1,8 +1,8 @@
 package com.somar.softwareTesting;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class PartnersPageTest {
     public WebDriver driver;
 
-    @BeforeAll
+    @BeforeEach
     public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -28,7 +28,7 @@ class PartnersPageTest {
         assertTrue(partnersPage.returnTextAreaText().contains("Tell us how we can help"));
     }
 
-    @AfterAll
+    @AfterEach
     public void close() {
         if (driver != null) {
             driver.quit();

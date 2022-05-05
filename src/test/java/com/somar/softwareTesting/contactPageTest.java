@@ -1,8 +1,8 @@
 package com.somar.softwareTesting;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +17,7 @@ class contactPageTest {
     private String password = "somarsomar";
     private String path = "C:\\Users\\Somar\\GradleProjects\\Selenium\\src\\assets\\1.png";
 
-    @BeforeAll
+    @BeforeEach
     public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -51,7 +51,7 @@ class contactPageTest {
         assertTrue(contactPage.dragAndDropFile(path).contains("1.png"));
     }
 
-    @AfterAll
+    @AfterEach
     public void close() {
         if (driver != null) {
             driver.quit();

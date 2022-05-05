@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class DashboardPage extends BasePage {
 
+    private By dealogCloseButton = By.xpath("//*[@id=\"ember3\"]/div[1]");
     private By profileButton = By.xpath("/html/body/div[1]/header/div/div/nav/ul[1]/li[7]/button");
     private By logoutButton = By.xpath("/html/body/div[1]/header/div/div/nav/ul[1]/li[7]/ul/li[7]/a");
     private By openSearchWindow = By.xpath("/html/body/div[1]/header/div/div/nav/ul[1]/li[9]/button");
@@ -15,6 +16,9 @@ public class DashboardPage extends BasePage {
 
     public DashboardPage(WebDriver driver) {
         super(driver);
+        
+        if (!this.driver.findElements(dealogCloseButton).isEmpty())
+        this.waitBeforClick(dealogCloseButton).click(); 
     }
 
     public SignInPage signOut() {

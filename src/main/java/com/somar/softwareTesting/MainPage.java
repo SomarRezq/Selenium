@@ -19,8 +19,8 @@ public class MainPage extends BasePage {
     public MainPage(WebDriver driver) {
         super(driver);
         this.driver.get("https://www.browserstack.com/");
-        this.waitBeforClick(cookieAcceptButton).click();
-        
+        if (!this.driver.findElements(cookieAcceptButton).isEmpty())
+        this.waitBeforClick(cookieAcceptButton).click(); 
     }
 
     public String returnFooter() {

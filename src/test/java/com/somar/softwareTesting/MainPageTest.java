@@ -1,8 +1,8 @@
 package com.somar.softwareTesting;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.openqa.selenium.By;
@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 class MainPageTest {
     public WebDriver driver;
 
-    @BeforeAll
+    @BeforeEach
     public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -69,7 +69,7 @@ class MainPageTest {
         assertTrue(bodyElement.getText().contains("Testing Made Easy"));
     }
 
-    @AfterAll
+    @AfterEach
     public void close() {
         if (driver != null) {
             driver.quit();
