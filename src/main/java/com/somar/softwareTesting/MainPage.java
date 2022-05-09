@@ -20,7 +20,6 @@ public class MainPage extends BasePage {
     public MainPage(WebDriver driver) {
         super(driver);
         configFileReader= new ConfigFileReader();
-
         this.driver.get(configFileReader.getWebsiteUrl());
         if (!this.driver.findElements(cookieAcceptButton).isEmpty())
         this.waitBeforClick(cookieAcceptButton).click(); 
@@ -58,7 +57,11 @@ public class MainPage extends BasePage {
 
     }
 
-    public String GetTitle() {
+    public String getTitle() {
         return this.driver.getTitle();
+    }
+
+    public String getCookies() {
+        return this.driver.manage().getCookies().toString();
     }
 }

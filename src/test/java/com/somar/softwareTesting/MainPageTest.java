@@ -22,11 +22,13 @@ import java.util.concurrent.TimeUnit;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class MainPageTest {
     public WebDriver driver;
+    ConfigFileReader configFileReader;
     public List<StaticPageClass> staticPages = new ArrayList<>();
 
     @BeforeEach
     public void setup() {
         WebDriverManager.chromedriver().setup();
+        configFileReader = new ConfigFileReader();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         this.staticPages.add(new StaticPageClass("https://www.browserstack.com/", "App & Browser Testing Made Easy"));
@@ -59,7 +61,7 @@ class MainPageTest {
     @Test
     public void testGetTitleAction() {
         MainPage mainPage = new MainPage(this.driver);
-        assertTrue(mainPage.GetTitle().contains("Most Reliable App & Cross Browser Testing Platform | BrowserStack"));
+        assertTrue(mainPage.getTitle().contains("Most Reliable App & Cross Browser Testing Platform | BrowserStack"));
     }
 
     @Test
@@ -86,6 +88,12 @@ class MainPageTest {
             WebElement bodyElement = page.waitForElement(By.tagName("body"));
             assertTrue(bodyElement.getText().contains(staticPage.getTestText()));
         } );
+    }
+
+    @Test
+    public void testGetCookiesContainsDomainName() {
+        MainPage mainPage = new MainPage(this.driver);
+        assertTrue(mainPage.getCookies().contains("browserstack.com"));
     }
 
     @AfterEach
